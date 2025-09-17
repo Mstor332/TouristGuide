@@ -16,7 +16,7 @@ public class TouristService {
 
     }
 
-    public List<String> getTags(){
+    public List<String> getTags() {
 
         return touristRepository.getTags();
     }
@@ -26,12 +26,12 @@ public class TouristService {
         return touristRepository.getAll();
     }
 
-    public TouristAttraction getSpecificAttraction(String name){
+    public TouristAttraction getSpecificAttraction(String name) {
 
         return touristRepository.getAttractionByName(name);
     }
-// denne metode er til save
-    public TouristAttraction addAttraction(TouristAttraction attraction){
+
+    public TouristAttraction addAttraction(TouristAttraction attraction) {
 
         return touristRepository.addAttraction(attraction);
 
@@ -42,14 +42,13 @@ public class TouristService {
         return touristRepository.deleteAttraction(name);
     }
 
-    public TouristAttraction getAttractionByName(String name){
+    public TouristAttraction getAttractionByName(String name) {
 
         return touristRepository.getAttractionByName(name);
     }
 
-    public TouristAttraction editAttraction(TouristAttraction attraction){
-
-        return touristRepository.editAttraction(attraction);
+    public TouristAttraction editAttraction(String nameID,TouristAttraction attraction) {
+        return touristRepository.editAttraction(nameID, attraction);
     }
 
     public List<String> getCityList() {
@@ -58,5 +57,3 @@ public class TouristService {
 
 }
 
-//Connect den med Repo, så den kan connecte til Controlleren.
-//

@@ -4,13 +4,6 @@ import java.util.List;
 
 public class TouristAttraction {
 
-
-    //Rune pjækker
-
-    //YADIII WAS HEREEEE
-
-    //BRANCH K O M E N T A R HEJ
-
     private String name;
     private String description;
     private List<String> tags;
@@ -51,7 +44,7 @@ public class TouristAttraction {
         return name;
     }
 
-    public String setDescription(String newDescription){
+    public String setDescription(String newDescription) {
         description = newDescription;
 
         return description;
@@ -65,5 +58,9 @@ public class TouristAttraction {
 
     public String getCity() {
         return city;
+    }
+
+    public String toString(){
+        return name+","+description+","+tags+","+city;
     }
 }

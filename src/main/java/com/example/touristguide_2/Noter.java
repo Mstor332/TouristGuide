@@ -5,4 +5,4 @@
 
 3. vi skal lavbe delete funlktion
 
- */
+*/

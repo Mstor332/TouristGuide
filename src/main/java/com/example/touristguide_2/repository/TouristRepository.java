@@ -12,7 +12,6 @@ public class TouristRepository {
     List<String> tagList = new ArrayList<>();
     List<String> cityList = new ArrayList<>();
 
-    //Virker ikke pga. flere parameter i construktør -tags-
     public TouristRepository() {
         attractionList.add(new TouristAttraction("Tivoli", "Dansk forlystelsespark", "København", List.of("Koncert", "Runes tag")));
         attractionList.add(new TouristAttraction("Rundetårn", "Tårn placeret i centrum af København", "København ", List.of("Koncert", "Yac tag")));
@@ -22,9 +21,9 @@ public class TouristRepository {
 
         tagList.add("Underholdning");
         tagList.add("Koncert");
-        tagList.add("Augusts Tag");
-        tagList.add("Runes tag");
-        tagList.add("Yac tag");
+        tagList.add("Børnevenligt");
+        tagList.add("Natur");
+        tagList.add("Museum");
 
         cityList.add("København");
         cityList.add("Stenløse");
@@ -64,32 +63,17 @@ public class TouristRepository {
         return attraction;
     }
 
-    public TouristAttraction updateAttractionName(TouristAttraction attraction, String update) {
-        attraction.setName(update);
-
-        return attraction;
-    }
-
-    public TouristAttraction updateAttractionDescription(TouristAttraction attraction, String update) {
-        attraction.setDescription(update);
-
-        return attraction;
-    }
-
-    public TouristAttraction editAttraction(TouristAttraction attraction) {
-        TouristAttraction tempAttraction = getAttractionByName(attraction.getName());
-
+    public TouristAttraction editAttraction(String nameID, TouristAttraction attraction) {
+        TouristAttraction tempAttraction = getAttractionByName(nameID);
 
         if (tempAttraction != null) {
-            //attractionList.remove(tempAttraction);
             tempAttraction.setName(attraction.getName());
             tempAttraction.setDescription(attraction.getDescription());
-
-            //attractionList.add(tempAttraction);
+            tempAttraction.setCity(attraction.getCity());
+            tempAttraction.setTags(attraction.getTags());
 
             return tempAttraction;
         }
-
         return null;
     }
 

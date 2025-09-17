@@ -2,8 +2,6 @@ package com.example.touristguide_2.controller;
 
 import com.example.touristguide_2.model.TouristAttraction;
 import com.example.touristguide_2.service.TouristService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +19,7 @@ public class TouristController {
 
 
     @GetMapping("list") //attraction
-    public String getAllAttractions(Model model){
+    public String getAllAttractions(Model model) {
         List<TouristAttraction> attractionList = touristService.getAllAttractions();
         model.addAttribute("list", attractionList);
         return "attractionList";
@@ -30,7 +28,7 @@ public class TouristController {
     //Slettet name
 
     @GetMapping("/add")
-    public String addAttraction(Model model){
+    public String addAttraction(Model model) {
         TouristAttraction newAttraction = new TouristAttraction();
 
         model.addAttribute("attraction", newAttraction);
@@ -40,7 +38,7 @@ public class TouristController {
     }
 
     @PostMapping("/save")
-    public String saveAttraction(TouristAttraction attraction){
+    public String saveAttraction(TouristAttraction attraction) {
         touristService.addAttraction(attraction);
 
         return "redirect:/attraction/list";
@@ -48,10 +46,10 @@ public class TouristController {
 
     //Reminder, Byttet om på update og edit i opgaven.
     @GetMapping("/{name}/update")
-    public String updateAttraction(@PathVariable String name, Model model){
+    public String updateAttraction(@PathVariable String name, Model model) {
         TouristAttraction attraction = touristService.getAttractionByName(name);
 
-        if(attraction == null){
+        if (attraction == null) {
             throw new IllegalArgumentException("Invalid attraction name");
         }
         model.addAttribute("attraction", attraction);
@@ -60,20 +58,20 @@ public class TouristController {
         return "updateAttractionForm";
     }
 
-    @PostMapping("/{name}/edit")
-    public String editAttraction(TouristAttraction attraction){
-        touristService.editAttraction(attraction);
+    @PostMapping("/{nameID}/edit")
+    public String editAttraction(@PathVariable String nameID, TouristAttraction attraction) {
+        touristService.editAttraction(nameID, attraction);
         return "redirect:/attraction/list";
     }
 
     @GetMapping("/{name}/delete")
-    public String deleteAttraction(@PathVariable String name){
+    public String deleteAttraction(@PathVariable String name) {
         touristService.deleteAttraction(name);
         return "redirect:/attraction/list";
     }
 
     @GetMapping("/{name}/tags")
-    public String getTagInfo(@PathVariable String name, Model model){
+    public String getTagInfo(@PathVariable String name, Model model) {
         model.addAttribute("attraction", touristService.getSpecificAttraction(name));
         return "tags";
     }
