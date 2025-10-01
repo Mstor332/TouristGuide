@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 //Tester push qodana
+//Endnu en test
 
 @Controller
 @RequestMapping("attraction")
