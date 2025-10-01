@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.List;
 
+//Test push
 @Repository
 public class TouristRepository {
     ArrayList<TouristAttraction> attractionList = new ArrayList<>();
