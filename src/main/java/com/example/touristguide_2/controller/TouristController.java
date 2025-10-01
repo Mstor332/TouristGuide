@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+//Tester push qodana
+
 @Controller
 @RequestMapping("attraction")
 public class TouristController {
